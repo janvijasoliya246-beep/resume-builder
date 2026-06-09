@@ -1,0 +1,151 @@
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #e2e8f0;
+}
+
+/* MAIN LAYOUT */
+.main-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 230px;
+  background: linear-gradient(to bottom, #0f172a, #1e293b);
+  color: white;
+  padding: 25px;
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar h2 {
+  margin-bottom: 30px;
+  font-size: 30px;
+}
+
+.sidebar p {
+  cursor: pointer;
+  margin: 18px 0;
+  font-size: 17px;
+  transition: 0.3s;
+}
+
+.sidebar p:hover {
+  color: #38bdf8;
+  transform: translateX(5px);
+}
+
+/* FORM SECTION */
+.form-container {
+  width: 35%;
+  padding: 25px;
+  background: #f8fafc;
+  overflow-y: auto;
+}
+
+.form-section h2 {
+  font-size: 32px;
+  margin-bottom: 25px;
+}
+
+/* INPUTS */
+.form-section input,
+.form-section textarea {
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid #cbd5e1;
+  font-size: 15px;
+  margin-bottom: 12px;
+  transition: 0.3s;
+  background: white;
+}
+
+.form-section input:focus,
+.form-section textarea:focus {
+  border-color: themeColor;
+  box-shadow: 0 0 8px rgba(37, 99, 235, 0.3);
+}
+
+/* PREVIEW */
+.preview-container {
+  width: 65%;
+  padding: 30px;
+  overflow-x: auto;
+  background: #e2e8f0;
+}
+
+.preview-section {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* BUTTONS */
+button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 12px;
+
+  background: linear-gradient(to right,
+      #2563eb,
+      #3b82f6);
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+button:hover {
+  transform: translateY(-3px);
+
+  background: linear-gradient(to right,
+      #1d4ed8,
+      #2563eb);
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+}
+
+/* TEMPLATE CARDS */
+.template-card {
+  background: white;
+  padding: 25px;
+  border-radius: 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  transition: 0.3s;
+}
+
+.template-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.template-card img {
+  width: 240px;
+  border-radius: 12px;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+
+  .main-container {
+    flex-direction: column;
+  }
+
+  .sidebar,
+  .form-container,
+  .preview-container {
+    width: 100%;
+  }
+
+  .preview-container {
+    padding: 10px;
+  }
+
+  .template-card img {
+    width: 100%;
+  }
+}
