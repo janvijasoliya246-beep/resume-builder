@@ -12,7 +12,7 @@ body {
 
 /* SIDEBAR */
 .sidebar {
-  width: 320px;
+  width: 300px;
   background: linear-gradient(to bottom, #0f172a, #1e293b);
   color: white;
   padding: 20px;
@@ -39,7 +39,8 @@ body {
 
 /* FORM SECTION */
 .form-container {
-  width: 35%;
+  flex: 1;
+  min-width: 420px;
   padding: 25px;
   background: #f8fafc;
   overflow-y: auto;
@@ -71,9 +72,9 @@ body {
 
 /* PREVIEW */
 .preview-container {
-  width: 65%;
+  flex: 2;
   padding: 30px;
-  overflow-x: auto;
+  overflow: auto;
   background: #e2e8f0;
 }
 
@@ -81,6 +82,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  min-width: 850px;
 }
 
 /* BUTTONS */

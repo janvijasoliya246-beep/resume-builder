@@ -130,7 +130,7 @@ export default function Builder() {
         minHeight: "100vh"
       }}
     >
-      
+
       <h1
         style={{
           textAlign: "center",
@@ -665,7 +665,14 @@ export default function Builder() {
 
           <div className="preview-section">
 
-            <div id="resume-preview">
+            <div
+              id="resume-preview"
+              style={{
+                minWidth: "794px",
+                overflow: "auto",
+                padding: "10px"
+              }}
+            >
 
               {data.template === "modern" && (
                 <ModernLayout data={data} />
