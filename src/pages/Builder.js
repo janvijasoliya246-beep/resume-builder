@@ -21,7 +21,6 @@ import {
 
 export default function Builder() {
   const [darkMode, setDarkMode] = useState(false);
-  const [themeColor, setThemeColor] = useState("#2563eb");
   const [data, setData] = useState({
     profilePic: "",
     template: "modern",
