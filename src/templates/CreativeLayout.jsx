@@ -54,21 +54,20 @@ export default function CreativeLayout({ data }) {
 
                 <h2>Skills</h2>
 
-                <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
+                <div>
                     {data.skills.split(",").map((skill, i) => (
-                        <span
+                        <p
                             key={i}
                             style={{
-                                background: "#1e293b",
-                                padding: "5px 10px",
-                                borderRadius: "10px",
-                                fontSize: "14px"
+                                margin: "8px 0",
+                                fontSize: "15px"
                             }}
                         >
-                            {skill.trim()}
-                        </span>
+                            • {skill.trim()}
+                        </p>
                     ))}
                 </div>
+
             </div>
 
             {/* RIGHT CONTENT */}

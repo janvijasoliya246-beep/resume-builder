@@ -3,6 +3,9 @@ import ClassicLayout from "../templates/ClassicLayout";
 import CreativeLayout from "../templates/CreativeLayout";
 import ATSLayout from "../templates/ATSLayout";
 
+import modernImg from "../assets/Modern.png";
+import atsImg from "../assets/ATS.png";
+
 import "../Builder.css";
 import html2pdf from "html2pdf.js";
 import { useState, useEffect } from "react";
@@ -13,7 +16,8 @@ import {
   FaHome,
   FaPalette,
   FaDownload
-} from "react-icons/fa";
+}
+  from "react-icons/fa";
 
 export default function Builder() {
   const [darkMode, setDarkMode] = useState(false);
@@ -83,11 +87,7 @@ export default function Builder() {
 
   /* SAVE RESUME */
   const saveResume = () => {
-
-    localStorage.setItem(
-      "resumeData",
-      JSON.stringify(data)
-    );
+    localStorage.setItem("resumeData", JSON.stringify(data));
 
     console.log("working");
     toast.success("Resume Saved Successfully!");
@@ -131,7 +131,15 @@ export default function Builder() {
         minHeight: "100vh"
       }}
     >
-      <h1 style={{ textAlign: "center", paddingTop: "20px" }}>
+      
+      <h1
+        style={{
+          textAlign: "center",
+          paddingTop: "20px",
+          fontSize: "42px",
+          fontWeight: "700"
+        }}
+      >
         Online Resume Builder
       </h1>
 
@@ -140,7 +148,7 @@ export default function Builder() {
         {/* SIDEBAR */}
         <div className="sidebar">
 
-          <h2>Resume App</h2>
+          <h2 style={{ fontSize: "32px" }}>Resume App</h2>
 
           <button
             onClick={() => setDarkMode(!darkMode)}
@@ -149,48 +157,27 @@ export default function Builder() {
             {darkMode ? "Light Mode" : "Dark Mode"}
           </button>
 
-          <div style={{ marginBottom: "20px" }}>
-
-            <button
-              onClick={() => setThemeColor("#2563eb")}
-            >
-              Blue
-            </button>
-
-            <button
-              onClick={() => setThemeColor("#16a34a")}
-              style={{ marginLeft: "10px" }}
-            >
-              Green
-            </button>
-
-            <button
-              onClick={() => setThemeColor("#dc2626")}
-              style={{ marginLeft: "10px" }}
-            >
-              Red
-            </button>
-
-          </div>
-
           <p
             style={{
               color:
                 activePage === "dashboard"
                   ? "#38bdf8"
-                  : "white"
+                  : "white",
+              fontSize: "28px",
+              cursor: "pointer"
             }}
             onClick={() => setActivePage("dashboard")}
           >
             <FaHome /> Dashboard
           </p>
-
           <p
             style={{
               color:
                 activePage === "templates"
-                  ? themeColor
-                  : "white"
+                  ? "#38bdf8"
+                  : "white",
+              fontSize: "28px",
+              cursor: "pointer"
             }}
             onClick={() => setActivePage("templates")}
           >
@@ -202,7 +189,9 @@ export default function Builder() {
               color:
                 activePage === "download"
                   ? "#38bdf8"
-                  : "white"
+                  : "white",
+              fontSize: "28px",
+              cursor: "pointer"
             }}
             onClick={() => setActivePage("download")}
           >
@@ -222,8 +211,7 @@ export default function Builder() {
           >
             {activePage === "dashboard" && (
               <>
-                <h2>Enter Details</h2>
-
+                <h2 style={{ fontSize: "28px" }}>Enter Details</h2>
                 {/* PROFILE IMAGE */}
                 <input
                   type="file"
@@ -253,6 +241,7 @@ export default function Builder() {
                   placeholder="Your Name"
                   value={data.name}
                   onChange={handleChange}
+                  style={{ fontSize: "16px", padding: "10px" }}
                 />
 
                 <br /><br />
@@ -263,26 +252,58 @@ export default function Builder() {
                   placeholder="Role / Job Title"
                   value={data.role}
                   onChange={handleChange}
+
                 />
 
                 <br /><br />
 
                 {/* EMAIL */}
                 <input
+                  type="text"
                   name="email"
-                  placeholder="Email"
+                  placeholder="Enter Gmail"
                   value={data.email}
-                  onChange={handleChange}
+                  onChange={(e) => {
+                    const value = e.target.value;
+
+                    setData({
+                      ...data,
+                      email: value,
+                    });
+                  }}
+                  onBlur={(e) => {
+                    const value = e.target.value;
+
+                    const gmailPattern =
+                      /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+
+                    if (value !== "" && !gmailPattern.test(value)) {
+                      alert("Please enter valid Gmail (example@gmail.com)");
+                    }
+                  }}
                 />
 
                 <br /><br />
 
                 {/* PHONE */}
                 <input
+                  type="text"
                   name="phone"
-                  placeholder="Phone"
+                  maxLength="10"
                   value={data.phone}
-                  onChange={handleChange}
+                  onChange={(e) => {
+                    const value = e.target.value;
+
+                    if (/[^0-9]/.test(value)) {
+                      alert("Only numbers are allowed");
+                    }
+
+                    setData({
+                      ...data,
+                      phone: value.replace(/\D/g, "")
+                    });
+                  }}
+                  placeholder="Enter Mobile Number"
                 />
 
                 <br /><br />
@@ -330,9 +351,9 @@ export default function Builder() {
                 {/* EDUCATION */}
                 <textarea
                   name="education"
-                  placeholder="Education"
                   value={data.education}
                   onChange={handleChange}
+                  style={{ fontSize: "16px", padding: "10px" }}
                 />
 
                 <br /><br />
@@ -470,7 +491,7 @@ export default function Builder() {
                   transition={{ duration: 0.4 }}
                 >
                   <img
-                    src="/modern.png"
+                    src={modernImg}
                     alt="Modern Template"
                     style={{
                       width: "220px",
@@ -572,7 +593,7 @@ export default function Builder() {
                   transition={{ duration: 0.4 }}
                 >
                   <img
-                    src="/ats.png"
+                    src={atsImg}
                     alt="ATS Template"
                     style={{
                       width: "220px",

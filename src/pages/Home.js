@@ -11,7 +11,7 @@ export default function Home() {
       <p>Create professional resumes in minutes</p>
 
       <button 
-        style={{ padding: "10px 20px", fontSize: "16px" }}
+        style={{ padding: "10px 20px", fontSize: "20px" }}
         onClick={() => navigate("/login")}
       >
         Create Resume
