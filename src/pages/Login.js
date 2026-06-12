@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function Login() {
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
   const navigate = useNavigate();
 
   const handleLogin = (e) => {
@@ -15,8 +15,25 @@ export default function Login() {
       return;
     }
 
-    alert("Login Successful!");
-    navigate("/builder");
+    // Get registered user from Local Storage
+    const savedUser = JSON.parse(localStorage.getItem("user"));
+
+    if (!savedUser) {
+      alert("No account found. Please register first.");
+      navigate("/register");
+      return;
+    }
+
+    // Verify email and password
+    if (
+      email === savedUser.email &&
+      password === savedUser.password
+    ) {
+      alert("Login Successful!");
+      navigate("/builder");
+    } else {
+      alert("Invalid Email or Password");
+    }
   };
 
   return (
@@ -117,15 +134,9 @@ export default function Login() {
           }}
         >
           Don't have an account?{" "}
-          <span
-            style={{
-              color: "#2563eb",
-              fontWeight: "bold",
-              cursor: "pointer",
-            }}
-          >
+          <button onClick={() => navigate("/register")}>
             Register
-          </span>
+          </button>
         </p>
       </div>
     </div>
