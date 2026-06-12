@@ -3,10 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 export default function Register() {
 
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-
     const navigate = useNavigate();
 
     const [user, setUser] = useState({
@@ -43,9 +39,12 @@ export default function Register() {
 
         localStorage.setItem(
             "registeredUser",
-            JSON.stringify(user)
+            JSON.stringify({
+                name: user.name,
+                email: user.email,
+                password: user.password,
+            })
         );
-
         alert("Registration Successful!");
         navigate("/login");
     };
@@ -104,7 +103,7 @@ export default function Register() {
                     <input
                         type="email"
                         name="email"
-                        placeholder="Email Address"
+                        placeholder="Email"
                         value={user.email}
                         onChange={handleChange}
                         style={inputStyle}
