@@ -16,7 +16,9 @@ export default function Login() {
     }
 
     // Get registered user from Local Storage
-    const savedUser = JSON.parse(localStorage.getItem("user"));
+    const savedUser = JSON.parse(
+      localStorage.getItem("registeredUser")
+    );
 
     if (!savedUser) {
       alert("No account found. Please register first.");

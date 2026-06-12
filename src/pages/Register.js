@@ -2,6 +2,11 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function Register() {
+
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
     const navigate = useNavigate();
 
     const [user, setUser] = useState({
@@ -31,15 +36,6 @@ export default function Register() {
             return;
         }
 
-        localStorage.setItem(
-            "user",
-            JSON.stringify({
-                name,
-                email,
-                password
-            })
-        );
-
         if (user.password !== user.confirmPassword) {
             alert("Passwords do not match");
             return;
@@ -47,11 +43,7 @@ export default function Register() {
 
         localStorage.setItem(
             "registeredUser",
-            JSON.stringify({
-                name: user.name,
-                email: user.email,
-                password: user.password,
-            })
+            JSON.stringify(user)
         );
 
         alert("Registration Successful!");
@@ -71,9 +63,9 @@ export default function Register() {
         >
             <div
                 style={{
-                    width: "650px",
+                    width: "450px",
                     background: "#fff",
-                    padding: "50px",
+                    padding: "35px",
                     borderRadius: "15px",
                     boxShadow: "0 8px 20px rgba(0,0,0,0.2)",
                     textAlign: "center",
@@ -178,10 +170,11 @@ export default function Register() {
 
 const inputStyle = {
     width: "100%",
-    padding: "15px",
-    marginBottom: "15px",
-    borderRadius: "8px",
-    border: "1px solid #ddd",
-    fontSize: "16px",
+    padding: "14px 16px",
+    marginBottom: "16px",
+    borderRadius: "10px",
+    border: "1px solid #d1d5db",
+    fontSize: "15px",
     boxSizing: "border-box",
+    outline: "none",
 };
